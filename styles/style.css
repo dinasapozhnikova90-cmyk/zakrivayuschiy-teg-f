@@ -36,6 +36,8 @@
 }
 
 .logo {
+  display: inline-block;
+  text-decoration: none;
   font-family: var(--font-family-accent), monospace;
   font-weight: 400;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
