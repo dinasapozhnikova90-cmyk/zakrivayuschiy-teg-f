@@ -14,8 +14,9 @@
   min-inline-size: 320px;
   min-block-size: 100dvh;
   font-family: var(--font-family-main), sans-serif;
-  font-variation-settings: 'wght' var(--font-weight-text) var(--font-weight-title);
+  font-variation-settings: 'wght' var(--font-weight-text);
   background-image: var(--background-image);
+  background-attachment: fixed;
   background-size: cover;
   margin-block: 100px;
 }
@@ -35,7 +36,7 @@
 }
 
 .logo {
-  font-family: var(--font-family-acсent), monospace;
+  font-family: var(--font-family-accent), monospace;
   font-weight: 400;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   vertical-align: bottom;
@@ -45,7 +46,7 @@
 }
 
 .logo-title {
-  font-family: var(--font-family-acсent), monospace;
+  font-family: var(--font-family-accent), monospace;
   font-weight: 400;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   text-transform: uppercase;
@@ -69,7 +70,7 @@
 
 .card__title {
   font-family: var(--font-family-main), sans-serif;
-  font-weight: var(--font-weight-title);
+  font-variation-settings: 'wght' var(--font-weight-title);
   font-size: 18px;
   color: #000;
   padding: 5px 10px 4px;
@@ -95,7 +96,7 @@
   position: absolute;
   top: 25px;
   right: 25px;
-  font-family: var(--font-family-acсent), monospace;
+  font-family: var(--font-family-accent), monospace;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -109,7 +110,8 @@
     -1px  1px 0 var(--text-stroke-color),
     0px  1px 0 var(--text-stroke-color),
     1px  1px 0 var(--text-stroke-color);
-  }
+  opacity: 50%;
+}
 
 @supports (text-stroke: 1px var(--text-stroke-color)) or (-webkit-text-stroke: 1px var(--text-stroke-color)) {
   .card__code-tag {
@@ -138,7 +140,7 @@
 
 .card__icon-button {
   inline-size: 36px;
-  block-size: 39px;
+  /*block-size: 39px;*/
   background-color: #fff;
   border: none;
 }
@@ -154,13 +156,11 @@
 }
 
 .card__icon-button:focus-visible {
-  border: 2px solid var(--accent-color);
+  outline: 2px solid var(--accent-color);
   transition: 0.3s ease;
 }
 
-.modal__button:focus,
-.card__actions-save:focus,
-.card__like-button:focus {
+.card__actions:focus {
   outline: none;
   box-shadow: 2px 2px 0 var(--accent-color);
 }
@@ -177,32 +177,33 @@
 .button__text {
   position: relative;
   z-index: 2;
-  font-family: var(--font-family-acсent), monospace;
+  font-family: var(--font-family-accent), monospace;
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
   background-color: transparent;
 }
 
-.card__like-button {
+.card__actions {
   position: relative;
   overflow: hidden;
   border: 2px solid #000;
-  transition: box-shadow 0.3s ease;
   background-color: var(--button-bg);
   color: var(--button-text);
+}
+
+.card__like-button {
+  transition: box-shadow 0.3s ease;
 }
 
 .button__like {
   inline-size: 130px;
   block-size: 38px;
   text-transform: capitalize;
-  padding-top: 9px;
+  padding-top: 4px;
 }
 
-.modal__button::before,
-.card__actions-save::before,
-.card__like-button::before {
+.card__actions::before {
   content: '';
   position: absolute;
   top: 0;
@@ -215,15 +216,11 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.modal__button:hover::before,
-.card__actions-save:hover::before,
-.card__like-button:hover::before {
+.card__actions:hover::before {
   transform: scaleX(1);
 }
-
-.modal__button .button__text,
-.card__actions-save .button__text, 
-.card__like-button .button__text {
+ 
+.card__actions .button__text {
   position: relative;
   mix-blend-mode: difference;
 }
@@ -234,11 +231,6 @@
 }
 
 .card__actions-save {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: 2px solid #000;
   display: flex;
   gap: 8px;
   align-self: center;
@@ -261,7 +253,6 @@
 
 .modal {
   inline-size: 353px;
-  block-size: 191px;
 }
 
 .modal__form {
@@ -278,14 +269,10 @@
 
 .modal__icon {
   align-self: center;
+  flex-shrink: 0;
 }
 
 .modal__button {
-  position: relative;
-  overflow: hidden;
-  border: 2px solid #000000;
-  background-color: var(--button-bg);
-  color: var(--button-text);
   padding-block: 8px;
   text-transform: uppercase;
 }
@@ -296,7 +283,6 @@
 }
 
 .text__dialog {
-  block-size: 63px;
   inline-size: 234px;
   line-height: 150%;
   text-transform: uppercase;
@@ -394,18 +380,13 @@
   animation: sparks 0.3s ease-in 0.3s;
 }
 
-@media(max-width: 400px) {
-  .main {
-    gap: 52px;
-  }
-  
+@media(max-width: 400px) { 
   .card__code-tag {
     top: 29px;
   }
 
   .card__content {
     gap: 24px;
-    padding: 25px 26px;
   }
 
   .card__actions-save {
@@ -426,7 +407,6 @@
 
   .modal {
     inline-size: 344px;
-    block-size: 191px;
     padding: 17px 27px;
   }
 }

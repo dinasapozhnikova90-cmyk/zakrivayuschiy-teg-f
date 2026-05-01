@@ -1,7 +1,7 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
   --font-family-main: 'Inter-Variable', sans-serif;
-  --font-family-acсent: 'Press Start 2P', monospace;
+  --font-family-accent: 'Press Start 2P', monospace;
   --font-weight-text: 410;
   --font-weight-title: 715;
   --background-image: 
@@ -9,7 +9,7 @@
     repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
     linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
   --rubber-block-width: clamp(375px, 30.5vw + 16.29rem, 700px);
-  --text-stroke-color: rgba(255, 255, 255, 0.5);
+  --text-stroke-color: #fff;
   --padding-block: clamp(121px, 0.66vw + 7.4rem, 128px);
   --padding-inline: clamp(16px, 9.8vw - 1.3rem, 120.5px);
   --accent-color: #000;
